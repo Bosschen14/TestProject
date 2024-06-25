@@ -9,7 +9,7 @@
 int main()
 {
     int fn1 = 1;        /* F(n-1) during the loop */
-    int fn2 = 0;        /* F(n-2) during the loop */
+    int fn2 = 0;        /* F(n-2) during the loopii */
     int f;              /* Computed Fibonacci number */
     int i;              /* Loop counter */
 

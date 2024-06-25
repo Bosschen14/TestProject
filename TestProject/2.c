@@ -97,15 +97,15 @@ float OrderTax(taxableIncome)
 	return Tax;
 }
 
-int main()
-{
-	int taxableIncome = 0;
-	float Tax = 0;
-
-
-	taxableIncome = CountTaxableIncome();
-	Tax = OrderTax(taxableIncome);
-	printf("u tax is%f", Tax);
-
-	return 0;
-}
+//int main()
+//{
+//	int taxableIncome = 0;
+//	float Tax = 0;
+//
+//
+//	taxableIncome = CountTaxableIncome();
+//	Tax = OrderTax(taxableIncome);
+//	printf("u tax is%f", Tax);
+//
+//	return 0;
+//}

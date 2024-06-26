@@ -131,8 +131,10 @@
     <ClCompile Include="3.c" />
     <ClCompile Include="4.c" />
     <ClCompile Include="5.c" />
-    <ClCompile Include="card.c" />
-    <ClCompile Include="CardGame.c" />
+    <ClCompile Include="card.h" />
+    <ClCompile Include="CardGame.c">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">F:\GitRep\TestProject\TestProject</AdditionalIncludeDirectories>
+    </ClCompile>
     <ClCompile Include="First.c" />
     <ClCompile Include="moon.c" />
   </ItemGroup>

@@ -19,40 +19,40 @@ double velocity;
 double burn;
 int time;
 
-int main()
-{
-    printf("Lunar Lander - (c) 2012, by <insert name here>\n");
-
-
-    printf("Altitude: %.2f\n", altitude);
-    printf("Velocity: %.2f\n", velocity);
-    printf("You have %.1f kilograms of fuel\n", fuel);
-
-    while (altitude > 0)
-    {
-        burn = burnFuel();
-        time++;
-        velocity = velocity + g + power * burn;
-        altitude += velocity;
-        fuel -= burn;
-
-        printf("Altitude: %.2f\n", altitude);
-        printf("Velocity: %.2f\n", velocity);
-        printf("You have %.1f kilograms of fuel\n", fuel);
-        if (fabs(velocity) > 3)
-        {
-            printf("Your next of kin have been notified\n");
-            altitude = -1;
-        }
-    }
-    printf("You landed with a velocity of %.2f\n", velocity);
-    printf("You landed time %d\n", time);
-
-
-
-
-
-}
+//int main()
+//{
+//    printf("Lunar Lander - (c) 2012, by <insert name here>\n");
+//
+//
+//    printf("Altitude: %.2f\n", altitude);
+//    printf("Velocity: %.2f\n", velocity);
+//    printf("You have %.1f kilograms of fuel\n", fuel);
+//
+//    while (altitude > 0)
+//    {
+//        burn = burnFuel();
+//        time++;
+//        velocity = velocity + g + power * burn;
+//        altitude += velocity;
+//        fuel -= burn;
+//
+//        printf("Altitude: %.2f\n", altitude);
+//        printf("Velocity: %.2f\n", velocity);
+//        printf("You have %.1f kilograms of fuel\n", fuel);
+//        if (fabs(velocity) > 3)
+//        {
+//            printf("Your next of kin have been notified\n");
+//            altitude = -1;
+//        }
+//    }
+//    printf("You landed with a velocity of %.2f\n", velocity);
+//    printf("You landed time %d\n", time);
+//
+//
+//
+//
+//
+//}
 
 
 int burnFuel()

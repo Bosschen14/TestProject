@@ -12,12 +12,14 @@ struct EntireCards
 {
     char Cards[8];
     char Suits[8];
+    int cardOrder;
+    int suitOrder;
 }EntireCard;
 
 struct EntireCards PrintCard(int card, int suit)
 {
-    char strCard[8] = "";
-    char strSuit[8] = "";
+    char strCard[16] = "";
+    char strSuit[16] = "";
 
 
     switch (card)
@@ -66,6 +68,8 @@ struct EntireCards PrintCard(int card, int suit)
     printf("\n");
     strcpy_s(EntireCard.Cards , sizeof(EntireCard.Cards), strCard);
     strcpy_s(EntireCard.Suits, sizeof(EntireCard.Suits),strSuit);
+    EntireCard.cardOrder = card;
+    EntireCard.suitOrder = suit;
     return EntireCard;
 }
 

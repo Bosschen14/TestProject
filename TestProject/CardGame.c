@@ -11,11 +11,11 @@ int WinCheck(struct EntireCards EntireCard1, struct EntireCards EntireCard2)
     int P1Suit = EntireCard1.suitOrder;
     int P2Card = EntireCard2.cardOrder;
     int P2Suit = EntireCard2.suitOrder;
-    if (P1Card == 1)
+    if (P1Card == 1) /*improve Ace order*/
     {
         P1Card = 14;
     }
-    if (P1Card == 2)
+    if (P1Card == 2) /*improve 2 order*/
     {
         P1Card = 15;
     }
@@ -53,14 +53,14 @@ int WinCheck(struct EntireCards EntireCard1, struct EntireCards EntireCard2)
     return 0;
 }
 
-int main()
-{
-    printf("player1's turn:\n");
-    EntireCardPlayer1 = makeCard();
-    printf("player2's turn:\n");
-    Sleep(1000);
-    EntireCardPlayer2 = makeCard();
-
-    WinCheck(EntireCardPlayer1, EntireCardPlayer2);
-
-}
+//int main()
+//{
+//    printf("player1's turn:\n");
+//    EntireCardPlayer1 = makeCard();
+//    printf("player2's turn:\n");
+//    Sleep(1000);
+//    EntireCardPlayer2 = makeCard();
+//
+//    WinCheck(EntireCardPlayer1, EntireCardPlayer2);
+//
+//}

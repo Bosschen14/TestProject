@@ -15,16 +15,32 @@ int highestNum(double gross[], char* names[])
 {
 	int highestGrossIndex = 0;
 	double highestGross = 0;
-	highestGross = 0;
+
+
 	for (int i = 0; i < NumMovies; i++)
 	{
+		//printf("gross[%d]:%.0lf ", i, gross[i]);
+		//printf("names[%d]:%s\n", i, names[i]);
 		if (gross[i] > highestGross)
 		{
+			//printf("i%d", i);
 			highestGrossIndex = i;
 			highestGross = gross[highestGrossIndex];
 		}
+		//printf("highestGrossIndex%d\n", highestGrossIndex);
 	}
-	printf("The highest grossing film is: %s\n", names[highestGrossIndex]);
+	//printf("names[highestGrossIndex]%s", names[highestGrossIndex]);
+	if (names[highestGrossIndex] == "")
+	{
+		printf("No movies\n");
+	}
+	else
+	{
+		printf("film is: %s\n", names[highestGrossIndex]);
+	}
+	
+	
+	return 0;
 }
 
 
@@ -42,35 +58,41 @@ int main()
 		sum += gross[i];
 		printf("Movie %2d %33s: %.0f\n", i + 1, names[i], gross[i]);
 	}
-
+	printf("The highest gross  is ");
 	highestNum(gross,names);
 
 
 
 	double maxGross[MaxGrosses] = { 500000, 1000000, 2000000, 4000000, 10000000 };
+
+
+
 	for (int i = 0; i < MaxGrosses; i++)
 	{
 		int k = 0;
+
+		double remainingGross[NumMovies] = { 0,0,0,0,0,0,0,0,0,0 };
+		char* remainingNames[NumMovies] = { "","","","","","","","","","" };
+
+
 		for (int j = 0; j < NumMovies; j++)
 		{	
-			double remainingGross[NumMovies] ;
-			char* remainingNames[NumMovies];
+
 			if (gross[j] < maxGross[i])
 			{
-				printf("%d\n", j);
-				printf("%d\n", i);
-				printf("%lf\n", gross[j]);
-				printf("%lf\n", maxGross[i]);
+
+				//printf("gross[j%d]%lf\n", j,gross[j]);
 				remainingGross[k] = gross[j];
 				remainingNames[k] = names[j];
-				printf("Element[%d] = %s\n", k, remainingNames[k]);
+				//printf("remainingNamest[%d] = %s\n", k, remainingNames[k]);
 				k++;
 
-				highestNum(remainingGross, remainingNames);
 			}
-			
-
 		}
+		printf("The highest gross less than %.0lf is ", maxGross[i]);
+		highestNum(remainingGross, remainingNames);
+		//printf("at %.0lf");
+
 	}
 }
 

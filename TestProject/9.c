@@ -18,20 +18,26 @@ int main()
     {
         c = getchar();
 
+        if (c != ' ' && c != '.' && len < MaxWord)
+        {
+            /* This is a character of a word */
+            str[len] = c;
+            len++;
+
+        }
+        else if (c = '  ')
+        {
+            printf("str is  ");
+        }
+        else
+        {
+            /* The word is done */
+           /* The word is done */
+            str[len] = 0;
+            printf("%s\n", str);
+            len = 0;
+        }
     } while (c != '.');
-    if (c != ' ' && c != '.' && len < MaxWord)
-    {
-        /* This is a character of a word */
-        str[len] = c;
-        len++;
 
-    }
-    else
-    {
-        /* The word is done */
-        str[len] = 0;
 
-        len = 0;
-    }
-    printf("%s\n", str);
 }

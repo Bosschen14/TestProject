@@ -45,10 +45,13 @@
     <ClCompile Include="8.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="teststr.cpp">
+    <ClCompile Include="9.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="9.c">
+    <ClCompile Include="10.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="11.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

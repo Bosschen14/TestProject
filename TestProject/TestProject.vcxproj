@@ -127,6 +127,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="10.c" />
+    <ClCompile Include="11.c" />
     <ClCompile Include="2.c" />
     <ClCompile Include="3.c" />
     <ClCompile Include="4.c" />
@@ -142,7 +144,6 @@
     </ClCompile>
     <ClCompile Include="First.c" />
     <ClCompile Include="moon.c" />
-    <ClCompile Include="teststr.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

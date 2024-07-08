@@ -24,12 +24,93 @@
 
 int cave[ArraySize];
 int* agentRoom;
-int* GetEmptyRoom(int cave[]);
+
 int agentDirection;
+
 void DisplayWorld(int cave[], int* agent, int agentDir);
+int* GetEmptyRoom(int cave[]);
+void CreateWorld(int cave[]);
+
+
 /* Directions I can face */
 #define Left 0
 #define Right 1
+
+
+
+
+
+int* GetEmptyRoom(int cave[])
+{
+    int room;
+
+    do
+    {
+        
+        room = rand() % (ArraySize - 2) + 1;
+        printf("rand%d\n", room);
+    } while (cave[room] != Empty);
+
+    return &cave[room];
+}
+
+void DisplayWorld(int cave[], int* agent, int agentDir)
+{
+    int* room;
+    
+    //printf("%d", *cave);
+
+    for (room = cave + 1; *room != End; room++)
+        {
+            if (room == agent)
+            {
+                switch (agentDir)
+                {
+                case Left:
+                    printf("<A  ");
+                    break;
+
+                case Right:
+                    printf(" A> ");
+                }
+
+                continue;
+            }
+
+            switch (*room)
+            {
+            case Wumpus:
+                printf("-W- ");
+                break;
+
+            default:
+                printf(" .  ");
+                break;
+            }
+        }
+
+        printf("\n");
+ }
+void CreateWorld(int cave[])
+{
+    int i;
+    int* room;
+
+    /* Initialize cave to empty */
+    for (i = 0; i < ArraySize; i++)
+    {
+        cave[i] = Empty;
+    }
+
+    /* Set the ends */
+    cave[0] = End;
+    cave[ArraySize - 1] = End;
+
+    /* Get a random empty room and put the Wumpus in it */
+
+    room = GetEmptyRoom(cave);
+    *room = Wumpus;
+}
 
 
 int main()
@@ -37,15 +118,16 @@ int main()
 
     char command[20];
     /* Seed the random number generator */
-    srand(time(NULL));
+    srand((unsigned int)time(NULL));
 
     agentRoom = GetEmptyRoom(cave);
     agentDirection = rand() % 2;
-    DisplayWorld(cave, agentRoom, agentDirection);
+
 
     /* The game loop */
     while (true)
     {
+        DisplayWorld(cave, agentRoom, agentDirection);
         /* Get the command */
         printf("Command: ");
         scanf_s("%20s", command, 20);
@@ -60,56 +142,4 @@ int main()
         }
     }
 
-}
-
-void CreateWorld(int cave[])
-{
-    /* Initialize cave to empty */
-    for (int i = 0; i < ArraySize; i++)
-    {
-        cave[i] = Empty;
-    }
-
-    /* Set the ends */
-    cave[0] = End;
-    cave[ArraySize - 1] = End;
-
-    int* room;
-    /* Get a random empty room and put the Wumpus in it */
-    room = GetEmptyRoom(cave);
-    *room = Wumpus;
-
-}
-
-int* GetEmptyRoom(int cave[])
-{
-    int room;
-
-    do
-    {
-        room = rand() % ArraySize;
-    } while (cave[room] != Empty);
-
-    return &cave[room];
-}
-
-void DisplayWorld(int cave[], int* agent, int agentDir)
-{
-    int* room;
-
-    for (room = cave + 1; *room != End; room++)
-    {
-        switch (*room)
-        {
-        case Wumpus:
-            printf("-W- ");
-            break;
-
-        default:
-            printf(" .  ");
-            break;
-        }
-    }
-
-    printf("\n");
 }

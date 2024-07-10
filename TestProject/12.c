@@ -48,12 +48,33 @@ int* GetEmptyRoom(int cave[])
     {
         
         room = rand() % (ArraySize - 2) + 1;
-        printf("rand%d\n", room);
+        //printf("rand%d\n", room);
     } while (cave[room] != Empty);
 
     return &cave[room];
 }
+void CreateWorld(int cave[])
+{
+    int i;
+    int* room;
 
+    /* Initialize cave to empty */
+    for (i = 0; i < ArraySize; i++)
+    {
+        cave[i] = Empty;
+
+    }
+
+    /* Set the ends */
+    cave[0] = End;
+    cave[ArraySize - 1] = End;
+
+    /* Get a random empty room and put the Wumpus in it */
+
+    room = GetEmptyRoom(cave);
+    *room = Wumpus;
+
+}
 void DisplayWorld(int cave[], int* agent, int agentDir)
 {
     int* room;
@@ -91,26 +112,30 @@ void DisplayWorld(int cave[], int* agent, int agentDir)
 
         printf("\n");
  }
-void CreateWorld(int cave[])
+int DifferenceByDirection(int dir)
 {
-    int i;
-    int* room;
+    if (dir == Left)
+        return -1;
+    else
+        return 1;
+}
+bool DisplayStatus(int cave[], int* agent)
+{
 
-    /* Initialize cave to empty */
-    for (i = 0; i < ArraySize; i++)
+    /* We will return true to indicate we are dead! */
+    if (*agent == Wumpus)
     {
-        cave[i] = Empty;
+        printf("You have been eaten by the Wumpus\n");
+        return true;
+    }
+    if (*(agent - 1) == Wumpus || *(agent + 1) == Wumpus)
+    {
+        printf("I smell a Wumpus\n");
     }
 
-    /* Set the ends */
-    cave[0] = End;
-    cave[ArraySize - 1] = End;
-
-    /* Get a random empty room and put the Wumpus in it */
-
-    room = GetEmptyRoom(cave);
-    *room = Wumpus;
+    return false;
 }
+
 
 
 int main()
@@ -127,6 +152,11 @@ int main()
     /* The game loop */
     while (true)
     {
+
+        if (DisplayStatus(cave, agentRoom))
+            break;
+
+        CreateWorld(cave);
         DisplayWorld(cave, agentRoom, agentDirection);
         /* Get the command */
         printf("Command: ");
@@ -136,6 +166,26 @@ int main()
             /* Exit, we are doing */
             break;
         }
+       
+        else if (strcmp(command, "move") == 0)
+        {
+            /* Move command */
+            /* What way do we need to go? */
+            int direction = DifferenceByDirection(agentDirection);
+            if (*(agentRoom + direction) != End)
+                agentRoom += direction;
+                }
+        else if (strcmp(command, "turn") == 0)
+        {
+            agentDirection = !agentDirection;
+        }
+        //else if (strcmp(command, "fire") == 0)
+        //{
+        //    if (*(agentRoom - agentWumpus) ==  || *(agent + 1) == Wumpus)
+        //    if (*agentRoom == Wumpus)    
+        //}
+        //}
+
         else
         {
             printf("I don't know what you are talking about\n");

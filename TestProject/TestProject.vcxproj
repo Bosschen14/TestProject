@@ -145,6 +145,7 @@
     </ClCompile>
     <ClCompile Include="First.c" />
     <ClCompile Include="moon.c" />
+    <ClCompile Include="p_e.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
